@@ -1,0 +1,9 @@
+{
+  "appTitle" : "Flutter starter app",
+  "appName" : "Application name",
+  "urlBase" : "Basic Url",
+  "appSlogan": "The digital finance !",
+  "developedBy": "Developed by",
+  "logIn": "Log in",
+  "getAccesCalculator": "Get access to the calculator"
+}

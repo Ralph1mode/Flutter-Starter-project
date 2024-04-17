@@ -1,0 +1,9 @@
+{
+  "appTitle" : "App flutter standard",
+  "appName" : "Nom de l'application",
+  "urlBase" : "Url de base",
+  "appSlogan": "La finance digitale !",
+  "developedBy": "Conçu par",
+  "logIn": "Se connecter",
+  "getAccesCalculator": "Accédez à la calculatrice"
+}
