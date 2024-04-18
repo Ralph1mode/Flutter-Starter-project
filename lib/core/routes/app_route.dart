@@ -13,7 +13,7 @@ class AppRoutes {
     ),
     GetPage(
         name: calculate,
-        page: () => const CalculatorPage(),
+        page: () => CalculatorPage(),
         transition: Transition.fadeIn,
         transitionDuration: const Duration(milliseconds: 400)),
   ];

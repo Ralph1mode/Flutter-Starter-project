@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_starter_project/config/theme/theme.dart';
+import 'package:flutter_starter_project/config/themeConfig/app_colors.dart';
 import 'package:flutter_starter_project/core/routes/app_route.dart';
-import 'package:flutter_starter_project/l10n/l10n.dart';
+import 'package:flutter_starter_project/translations/l10n/l10n.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 class MyAppConfig {

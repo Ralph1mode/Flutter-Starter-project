@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_starter_project/core/services/size_media_query.dart';
+import 'package:flutter_starter_project/ui/controllers/calculate_controller.dart';
 import 'package:flutter_starter_project/ui/widgets/app_bar.dart';
+import 'package:get/get.dart';
 
 class CalculatorPage extends StatelessWidget {
-  const CalculatorPage({super.key});
+  CalculatorPage({super.key});
+
+  final CalculatorController controller = Get.put(CalculatorController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,120 +28,23 @@ class CalculatorPage extends StatelessWidget {
             SizedBox(
               height: sizeHeight(context, 0.03),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Kit de bureau"),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("20"),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).colorScheme.secondaryContainer,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.remove),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            _ButtonCount(context, description: 'Kit de bureau', type: 1),
             SizedBox(
-              height: sizeHeight(context, 0.02),
+              height: sizeHeight(context, 0.03),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Kit de sécurité"),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("20"),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).colorScheme.secondaryContainer,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.remove),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            _ButtonCount(context, description: 'Kit de sécurité', type: 2),
             SizedBox(
-              height: sizeHeight(context, 0.02),
+              height: sizeHeight(context, 0.03),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("Climatiseur"),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.add,
-                          color: Theme.of(context).colorScheme.onPrimary,
-                        ),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text("20"),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color:
-                              Theme.of(context).colorScheme.secondaryContainer,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.remove),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+            // _SumButton(context),
+            Obx(() {
+              return Text(
+                  "Here is the sum of those data ${controller.sum().toString()}");
+            }),
+            SizedBox(
+              height: sizeHeight(context, 0.03),
             ),
+            _BackHomeButton(context),
           ],
         ),
       ),
@@ -145,45 +52,56 @@ class CalculatorPage extends StatelessWidget {
   }
 }
 
-class _ButtonAjust extends StatelessWidget {
-  const _ButtonAjust({super.key});
+Widget _ButtonCount(BuildContext context,
+    {required String description, required int type}) {
+  final CalculatorController controller = Get.put(CalculatorController());
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(description),
+      Row(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(50)),
+            child: IconButton(
+              onPressed: () => type == 1
+                  ? controller.decrease()
+                  : controller.decreaseSecurity(),
+              icon: const Icon(
+                Icons.remove,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Obx(() => type == 1
+                ? Text('${controller.value.value}')
+                : Text('${controller.security.value}')),
+          ),
+          Container(
+            decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary,
+                borderRadius: BorderRadius.circular(50)),
+            child: IconButton(
+              onPressed: () => type == 1
+                  ? controller.increase()
+                  : controller.increaseSecurity(),
+              icon: Icon(
+                Icons.add,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Text("Kit de sécurité"),
-        Row(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  borderRadius: BorderRadius.circular(50)),
-              child: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.add,
-                  color: Theme.of(context).colorScheme.onPrimary,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text("20"),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                  borderRadius: BorderRadius.circular(50)),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.remove),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+Widget _BackHomeButton(BuildContext context) {
+  return ElevatedButton(
+      onPressed: () => Get.back(), child: const Text("Back to home"));
 }

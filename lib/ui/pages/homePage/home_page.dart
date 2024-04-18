@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_starter_project/config/app_config.dart';
+import 'package:flutter_starter_project/config/mainConfig/app_config.dart';
 import 'package:flutter_starter_project/core/services/size_media_query.dart';
 import 'package:flutter_starter_project/ui/widgets/app_bar.dart';
 import 'package:get/get.dart';

@@ -70,7 +70,7 @@ flutter:
     - assets/logo/
 
 scripts:
-  create_controller: ./kivi_personal_script/create_controller.sh
+  create_controller: ./kivi/create_controller.sh
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
