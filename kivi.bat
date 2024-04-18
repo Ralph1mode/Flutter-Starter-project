@@ -2,6 +2,7 @@
 
 if "%~1" == "usecase" goto choice1
 if "%~1" == "repository" goto choice2
+if "%~1" == "page" goto choice3
 
 
 :choice1
@@ -34,6 +35,7 @@ goto :eof
 
         REM creer le repositoryImpl
 
+        echo import '../%REPOSITORY_NAME%_repository.dart'; >> lib\domain\repositories\implementations\%REPOSITORY_NAME%_repository_impl.dart
         echo abstract class %REPOSITORY_NAME%RepositoryImpl implements %REPOSITORY_NAME%Repository{ >> lib\domain\repositories\implementations\%REPOSITORY_NAME%_repository_impl.dart
         echo    final Get%REPOSITORY_NAME%UseCase get%REPOSITORY_NAME%UseCase; >> lib\domain\repositories\implementations\%REPOSITORY_NAME%_repository_impl.dart
 
@@ -48,5 +50,27 @@ goto :eof
 
         echo %REPOSITORY_NAME%Repository creer avec succes
         echo %REPOSITORY_NAME%RepositoryImpl creer avec succes
+
+goto :eof
+
+:choice3
+ REM Nom du usecase
+        set PAGE_NAME=%~2
+
+        REM creer le fichier du usecase
+        echo Creation de la page : %PAGE_NAME%
+
+        echo import 'package:flutter/material.dart';>> lib\ui\pages\%PAGE_NAME%_page.dart
+
+        echo class %PAGE_NAME.ToUpper%Page extends StatelessWidget {>> lib\ui\pages\%PAGE_NAME%_page.dart
+        echo   const %PAGE_NAME.ToUpper()%Page({super.key});>> lib\ui\pages\%PAGE_NAME%_page.dart
+
+        echo   @override>> lib\ui\pages\%PAGE_NAME%_page.dart
+        echo   Widget build(BuildContext context) {>> lib\ui\pages\%PAGE_NAME%_page.dart
+        echo     return const Placeholder();>> lib\ui\pages\%PAGE_NAME%_page.dart
+        echo   }>> lib\ui\pages\%PAGE_NAME%_page.dart
+        echo }>> lib\ui\pages\%PAGE_NAME%_page.dart
+
+        echo page creer avec succes !
 
 goto :eof

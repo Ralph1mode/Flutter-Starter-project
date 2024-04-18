@@ -1,5 +1,5 @@
-import 'package:flutter_starter_project/ui/pages/calculatorPage/calculator_page.dart';
-import 'package:flutter_starter_project/ui/pages/homePage/home_page.dart';
+import 'package:flutter_starter_project/ui/pages/calculator_page.dart';
+import 'package:flutter_starter_project/ui/pages/home_page.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {

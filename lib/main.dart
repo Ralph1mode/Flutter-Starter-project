@@ -4,7 +4,7 @@ import 'package:flutter_starter_project/config/mainConfig/main_config.dart';
 
 void main() async {
   AppConfig.create(
-    appName: "Flutter starter mainConfig Prod",
+    appName: "Flutter starter mainconfig Prod",
     baseUrl: "https://mediasofthome.com",
     primaryColor: Colors.yellow,
     flavor: Flavor.prod,
