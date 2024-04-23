@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_starter_project/config/mainConfig/app_config.dart';
-import 'package:flutter_starter_project/config/mainConfig/main_config.dart';
+import 'package:flutter_starter_project/config/mainconfig/app_config.dart';
+import 'package:flutter_starter_project/config/mainconfig/main_config.dart';
 
 void main() async {
   AppConfig.create(
