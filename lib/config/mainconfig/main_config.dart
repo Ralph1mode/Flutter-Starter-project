@@ -10,7 +10,7 @@ class MyAppConfig {
   static GetMaterialApp buildMaterialApp() {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo Production',
+      title: 'Midzoo',
       themeMode: ThemeMode.system,
       theme: lightMode,
       darkTheme: darkMode,
