@@ -4,7 +4,7 @@ void main(List<String> arguments) {
   //check arguments conditions
   if (arguments.isEmpty) {
     print(
-        '''Usage: dart ms-generator.dart <type> <name>\nor run "dart ms-generator.dart help" for more information
+        '''Usage: dart ms-generator.dart <type> <name>\nor run "dart ms-generator.dart --help" for more information
           ''');
     return;
   }
@@ -23,11 +23,12 @@ void main(List<String> arguments) {
       createEntity(arguments[1]);
       (arguments.length == 3) ? createRUP(arguments[1], arguments[2]) : null;
       break;
-    case 'help':
+    case '--help':
       forHelp();
       break;
     default:
-      print('Invalid type');
+      print('''Invalid type !
+run "dart ms-generator.dart --help" for more information''');
       break;
   }
 }
@@ -211,13 +212,22 @@ createEntity(String name) async {
 
 void forHelp() {
   print('''
-  Usage: dart ms-generator.dart <type> <name>.
+  Usage: dart ms-generator.dart <type> <name>
   Types:
     - usecase <name>: Create a new usecase with the specified name.
-    - repository <name>: Create a new repository and its implementation with the specified name.
+    - repository <name>: Create a new repository and it implementation with the specified name.
     - page <name>: Create a new Flutter page with the specified name.
     - entity <name>: Create a new entity with the specified name.
     - help: Display help.
+    
+   for "entity" type only you can add optional argument.
+        Usage: dart ms-generator.dart <type> <name> [<-arguments> optional]
+        Ex: > dart ms-generator.dart entity user -rup 
+        this command will generate an entity named User with it repository; repository implementation; usecase and page
+        
+        r => repository and repository implementation
+        u => usecase
+        p => page
   ''');
 }
 
